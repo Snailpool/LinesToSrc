@@ -15,7 +15,7 @@ var lineReader = require('readline').createInterface({
  });
 lineReader.on('line', function (line) {
   if(line.trim().length !== 0){
-  console.log('Line from file:', line);
+    //console.log('Line from file:', line);
     outputStream += lineCount 
     				+'\n'
     				+ '00:00:00,000 --> 00:00:00,000'
@@ -31,5 +31,10 @@ lineReader.on('close', function() {
 	writer.writeFile( filename.split('.')[0] +'_out.srt', outputStream, function(err){
      if (err) {
           console.error(err)
-     }});
+     }
+    else{
+    
+      console.log('done,check' , process.argv[2].slice(0,process.argv[2].indexOf('.')) + '_out.src');
+    }
+   });
 });
