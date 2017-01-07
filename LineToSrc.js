@@ -16,11 +16,11 @@ var lineReader = require('readline').createInterface({
 lineReader.on('line', function (line) {
   if(line.trim().length !== 0){
     //console.log('Line from file:', line);
-    outputStream += lineCount 
-    				+'\n'
+    outputStream += lineCount   + '\n'
     				+ '00:00:00,000 --> 00:00:00,000'
     				+ '\n' 
-    				+  '{\\fnMicrosoft JhengHei\\fs40}'+line 
+    				+ '{\\fnMicrosoft JhengHei\\fs40}'
+	    			+ line 
     				+ '\n';
     lineCount ++;
     }
