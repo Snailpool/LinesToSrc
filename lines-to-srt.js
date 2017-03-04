@@ -31,6 +31,9 @@ var transformer = (function(){
                   + '\n';
           lineCount ++;
         }
+        else{
+          console.error('nothing in file');
+        }
     });
 
     lineReader.on('close', function() {
