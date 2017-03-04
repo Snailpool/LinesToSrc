@@ -20,7 +20,7 @@ var transformer = (function(){
   }
   function read(){
     var outputStream ='';
-    var outputPah = path.join(__dirname, 'result', path.parse(filename).base +'_out.srt');
+    var outputPah = path.join(__dirname, 'result', path.parse(filename).name +'_out.srt');
     lineReader.on('line', function (line) {
       if(line.trim().length !== 0){
           outputStream += lineCount 
@@ -34,14 +34,13 @@ var transformer = (function(){
     });
 
     lineReader.on('close', function() {
-      fs.writeFile( outputPah, outputStream, function(err){
-        if (err) {
-          console.error(err)
-        }
-        else{
-          console.log('done,check' , filename.slice(0, filename.indexOf('.')));
-        }
-       });
+      try{
+        fs.writeFileSync(outputPah, outputStream)
+        console.log('done,check' , outputPah);
+      }
+      catch(err){
+          console.error(err);
+      };
     });
   }
   return {
